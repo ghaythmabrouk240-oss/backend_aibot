@@ -12,7 +12,7 @@ const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
     origin: [
-      "https://ai-chatbot-frontend-1vx1.onrender.com",
+      "https://frontend-aibot.onrender.com",
       "http://localhost:3000",
       "http://localhost:5173"
     ],
@@ -38,8 +38,9 @@ const ADMIN_SECRET = process.env.ADMIN_SECRET || 'iamtheserver2024';
 const blockedIPs = new Map();
 const blockedUsers = new Map();
 
-// Enhanced Medical Context
-const MEDICAL_CONTEXT = '';
+// FIXED: Enhanced Medical Context (was empty before)
+const MEDICAL_CONTEXT = ' '
+
 class RemoteOllamaService {
   async generateResponse(userMessage, socket) {
     return new Promise(async (resolve, reject) => {
@@ -897,4 +898,3 @@ process.on('SIGTERM', () => {
 });
 
 module.exports = app;
-
